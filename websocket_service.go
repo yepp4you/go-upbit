@@ -67,7 +67,7 @@ type WsTicker struct {
 	Highest52WeekDate   string  `json:"highest_52_week_date"`  // "2018-01-06",
 	Lowest52WeekPrice   float64 `json:"lowest_52_week_price"`  // 4175000,
 	Lowest52WeekDate    string  `json:"lowest_52_week_date"`   // "2017-09-25",
-	TimeStamp           int64   `json:"timestamp"`             // 1524047026072,
+	Timestamp           int64   `json:"timestamp"`             // 1524047026072,
 }
 
 // WsAggTradeHandler handle websocket aggregate trade event
