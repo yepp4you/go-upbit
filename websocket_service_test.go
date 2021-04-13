@@ -61,7 +61,7 @@ func (s *websocketServiceTestSuite) TestTickerServe() {
 	cfg := NewWsConfig(endpoint, code, ticket, typ, codes)
 	doneC, stopC, err := WsTickerServe(cfg, func(event *WsTicker) {
 		e := &WsTicker{}
-		fmt.Println(event)
+		fmt.Printf("%+v \n", event)
 		s.assertWsTickerEqual(e, event)
 	}, func(err error) {
 		fmt.Printf("err => %+v \n", err)

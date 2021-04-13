@@ -211,7 +211,7 @@ func (c *Client) callAPI(ctx context.Context, r *request, opts ...RequestOption)
 	c.debug("response body: %s", string(data))
 	c.debug("response status code: %d", res.StatusCode)
 
-	fmt.Printf("%+v", string(data))
+	// fmt.Printf("%+v", string(data))
 
 	if res.StatusCode >= 400 {
 		apiErr := new(common.APIError)
