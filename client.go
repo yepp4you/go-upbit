@@ -146,8 +146,7 @@ func (c *Client) parseRequest(r *request, opts ...RequestOption) (err error) {
 		claim["query_hash"] = hex.EncodeToString(c.QueryHash.Sum(nil))
 		claim["query_hash_alg"] = "SHA512"
 	}
-
-	fmt.Println(queryString)
+	//fmt.Println(queryString)
 
 	if bodyString != "" {
 		// claim["query"] = bodyString

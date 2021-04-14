@@ -24,5 +24,7 @@ func (s *tickerServiceTestSuite) TestTickerService() {
 
 	for _, price := range prices {
 		fmt.Printf("%+v \n", *price)
+		fmt.Printf("%.4f \n", price.TradePrice)
+		fmt.Printf("%.4f \n", price.HighPrice)
 	}
 }

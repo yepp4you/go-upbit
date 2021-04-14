@@ -18,7 +18,7 @@ func TestKlineService(t *testing.T) {
 func (s *klineServiceTestSuite) TestMinutesKlines() {
 	interval := "minutes"
 	unit := "60"
-	count := 20
+	count := 2
 	klines, err := s.client.NewKlinesService().Market("KRW-BTC").
 		Interval(interval).Unit(unit).Count(count).Do(newContext())
 	for _, kline := range klines {
