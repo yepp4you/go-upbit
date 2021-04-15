@@ -7,16 +7,16 @@ import (
 	"github.com/stretchr/testify/suite"
 )
 
-type orderbookServiceTestSuite struct {
+type orderBookServiceTestSuite struct {
 	baseTestSuite
 }
 
 func TestOrderBookService(t *testing.T) {
-	suite.Run(t, new(orderbookServiceTestSuite))
+	suite.Run(t, new(orderBookServiceTestSuite))
 }
 
-func (s *orderbookServiceTestSuite) TestOrderBook() {
-	orderbooks, err := s.client.NewListOrderbooksService().Markets("KRW-BTC").Do(newContext())
+func (s *orderBookServiceTestSuite) TestOrderBook() {
+	orderbooks, err := s.client.NewListOrderBooksService().Markets("KRW-BTC").Do(newContext())
 	if err != nil {
 		fmt.Printf("%+v \n", err)
 	}

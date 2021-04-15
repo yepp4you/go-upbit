@@ -19,7 +19,7 @@ func (s *ListOrderBooksService) Markets(markets string) *ListOrderBooksService {
 }
 
 // Do send request
-func (s *ListOrderBooksService) Do(ctx context.Context, opts ...RequestOption) (res []*Orderbook, err error) {
+func (s *ListOrderBooksService) Do(ctx context.Context, opts ...RequestOption) (res []*OrderBook, err error) {
 	r := &request{
 		method:   "GET",
 		endpoint: "/v1/orderbook",
@@ -31,7 +31,7 @@ func (s *ListOrderBooksService) Do(ctx context.Context, opts ...RequestOption) (
 		return nil, err
 	}
 	data = common.ToJSONList(data)
-	res = make([]*Orderbook, 0)
+	res = make([]*OrderBook, 0)
 	err = json.Unmarshal(data, &res)
 	if err != nil {
 		return nil, err
@@ -40,7 +40,7 @@ func (s *ListOrderBooksService) Do(ctx context.Context, opts ...RequestOption) (
 }
 
 // Kline define kline info
-type Orderbook struct {
+type OrderBook struct {
 	Market         string          `json:"market"`         // "KRW-BTC",
 	Timestamp      int64           `json:"timestamp"`      //: 1524046594584,
 	TotalAskSize   float64         `json:"total_ask_size"` //: 8.83621228,

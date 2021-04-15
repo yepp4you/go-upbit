@@ -263,6 +263,6 @@ func (c *Client) NewListTradesService() *ListTradesService {
 	return &ListTradesService{c: c}
 }
 
-func (c *Client) NewListOrderbooksService() *ListOrderBooksService {
+func (c *Client) NewListOrderBooksService() *ListOrderBooksService {
 	return &ListOrderBooksService{c: c}
 }
