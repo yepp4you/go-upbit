@@ -54,15 +54,17 @@ func (s *websocketServiceTestSuite) assertWsServe(count ...int) {
 
 func (s *websocketServiceTestSuite) TestTickerServe() {
 	endpoint := GetWsEndpoint()
-	code := "KRW-BTC"
+	code := "KRW-EOS"
 	ticket := "test1234"
 	typ := "ticker"
-	codes := []string{"KRW-BTC"}
+	codes := []string{"KRW-EOS"}
 	cfg := NewWsConfig(endpoint, code, ticket, typ, codes)
 	doneC, stopC, err := WsTickerServe(cfg, func(event *WsTicker) {
 		e := &WsTicker{}
 		fmt.Printf("%+v \n", event)
 		s.assertWsTickerEqual(e, event)
+		vp := event.AccBidVolume / event.AccAskVolume * 100
+		fmt.Printf("%+v \n", vp)
 	}, func(err error) {
 		fmt.Printf("err => %+v \n", err)
 		// s.r().EqualError(err, fakeErrMsg)
