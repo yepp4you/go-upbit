@@ -223,46 +223,42 @@ func (c *Client) callAPI(ctx context.Context, r *request, opts ...RequestOption)
 	return data, nil
 }
 
-// NewKlinesService init klines service
 func (c *Client) NewKlinesService() *KlinesService {
 	return &KlinesService{c: c}
 }
 
-// NewCreateOrderService init creating order service
 func (c *Client) NewCreateOrderService() *CreateOrderService {
 	return &CreateOrderService{c: c}
 }
 
-// NewGetOrderService init get order service
 func (c *Client) NewGetOrderService() *GetOrderService {
 	return &GetOrderService{c: c}
 }
 
-// NewCancelOrderService init cancel order service
 func (c *Client) NewCancelOrderService() *CancelOrderService {
 	return &CancelOrderService{c: c}
 }
 
-// NewListOrdersService init listing orders service
 func (c *Client) NewListOrdersService() *ListOrdersService {
 	return &ListOrdersService{c: c}
 }
 
-// NewGetAccountService init getting account service
 func (c *Client) NewGetAccountService() *GetAccountService {
 	return &GetAccountService{c: c}
 }
 
-// NewListTradesService init listing trades service
 func (c *Client) NewListPricesService() *ListPricesService {
 	return &ListPricesService{c: c}
 }
 
-// NewListTradesService init listing trades service
 func (c *Client) NewListTradesService() *ListTradesService {
 	return &ListTradesService{c: c}
 }
 
 func (c *Client) NewListOrderBooksService() *ListOrderBooksService {
 	return &ListOrderBooksService{c: c}
+}
+
+func (c *Client) NewMarketService() *MarketService {
+	return &MarketService{c: c}
 }
