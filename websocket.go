@@ -3,6 +3,8 @@ package upbit
 import (
 	"encoding/json"
 	"fmt"
+	"log"
+	"runtime/debug"
 	"time"
 
 	"github.com/gorilla/websocket"
@@ -63,7 +65,13 @@ var wsServe = func(cfg *WsConfig, handler WsHandler, errHandler ErrHandler) (don
 		// This function will exit either on error from
 		// websocket.Conn.ReadMessage or when the stopC channel is
 		// closed by the client.
-		defer close(doneC)
+		defer func() {
+			if r := recover(); r != nil {
+				log.Println("panic recover", r)
+				log.Println("stacktrace from panic: \n" + string(debug.Stack()))
+			}
+			defer close(doneC)
+		}()
 
 		if WebsocketKeepalive {
 			keepAlive(c, WebsocketTimeout)
@@ -105,7 +113,13 @@ func keepAlive(c *websocket.Conn, timeout time.Duration) {
 	})
 
 	go func() {
-		defer ticker.Stop()
+		defer func() {
+			if r := recover(); r != nil {
+				log.Println("panic recover", r)
+				log.Println("stacktrace from panic: \n" + string(debug.Stack()))
+			}
+			defer ticker.Stop()
+		}()
 		for {
 			deadline := time.Now().Add(10 * time.Second)
 			err := c.WriteControl(websocket.PingMessage, []byte{}, deadline)
