@@ -70,7 +70,7 @@ var wsServe = func(cfg *WsConfig, handler WsHandler, errHandler ErrHandler) (don
 				log.Println("panic recover", r)
 				log.Println("stacktrace from panic: \n" + string(debug.Stack()))
 			}
-			defer close(doneC)
+			close(doneC)
 		}()
 
 		if WebsocketKeepalive {
@@ -118,7 +118,7 @@ func keepAlive(c *websocket.Conn, timeout time.Duration) {
 				log.Println("panic recover", r)
 				log.Println("stacktrace from panic: \n" + string(debug.Stack()))
 			}
-			defer ticker.Stop()
+			ticker.Stop()
 		}()
 		for {
 			deadline := time.Now().Add(10 * time.Second)
